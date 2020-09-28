@@ -34,6 +34,13 @@ pipeline {
             jacoco()
 		}
 	}
+
+ stage('Jmeter'){
+         steps{
+	    // cd 	 C:\Program Files\apache-jmeter-5.3\bin
+            bat label: 'jmeter',script:'C:\\apache-jmeter-5.3\\bin\\jmeter -n -Jjmeter.save.saveservice.output_format=xml -t D:\\jmetertestplans\\jmeter-demo.jmx -l D:\\jmeter-test-results\\test-demo.jtl'
+          }
+	}
         
 	stage('SonarQube'){
          steps{
